@@ -10,6 +10,7 @@ public class TableHachage<K,V> {
 	
 	public TableHachage(){
 		h = new HashMap<K,V>();
+		//hey
 	}
 	
 	public void set(K k,V v){
