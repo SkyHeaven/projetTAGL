@@ -68,7 +68,8 @@ public class EchoServer {
                 	}
                      System.out.println (name+": " + inputLine);
 
-                	 String[] parts = inputLine.split(" ");
+                     // split afin de recuperer les arguments de la fonction
+                     String[] parts = inputLine.split(" ");
                      if( inputLine.contains("lPush" ) ) {
                     	 // split afin de recuperer les arguments de la fonction
                     	 writers.get(Integer.parseInt(name)).println(tableHachage.lPush(parts[1],parts[2]));
@@ -92,12 +93,21 @@ public class EchoServer {
                      }
                      else if (inputLine.contains("get" )){
                     	 writers.get(Integer.parseInt(name)).println(tableHachage.get(parts[1]));
+
                      }
                      else if (inputLine.contains("del" )){
                     	 writers.get(Integer.parseInt(name)).println(tableHachage.del(parts[1]));
+
                      }
                      else if (inputLine.contains("incr" )){
                     	 writers.get(Integer.parseInt(name)).println(tableHachage.incr(parts[1]));
+                     }
+                     else if (inputLine.contains("lPop")){
+                    	 writers.get(Integer.parseInt(name)).println(tableHachage.lPop(parts[1]));
+                     }
+                     else if (inputLine.contains("rPop")){
+                    	 writers.get(Integer.parseInt(name)).println(tableHachage.rPop(parts[1]));
+                    	 tableHachage.incr(parts[1]);
                      }
                      else if (inputLine.contains("lPop")){
                     	 writers.get(Integer.parseInt(name)).println(tableHachage.lPop(parts[1]));
