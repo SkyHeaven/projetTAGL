@@ -15,7 +15,7 @@ Pour le côté connexion client/serveur nous n'avons pas effecué de tests unita
  La syntaxe est la suivante : nomFonction [argument1] [argument2] ... [argument n]
  L'utilisateur a la possibilité de se servir des fonctions suivantes :
  
- ##Partie une valeur par clé :
+ ## Partie une valeur par clé :
  
  set cle valeur
  Ajoute la valeur associée à la clé.
