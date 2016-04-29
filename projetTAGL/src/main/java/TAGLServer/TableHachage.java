@@ -1,4 +1,4 @@
-package TAGLClient;
+package TAGLServer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
