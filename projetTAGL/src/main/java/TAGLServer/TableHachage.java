@@ -24,7 +24,6 @@ public class TableHachage {
 			if (st.charAt(i)=='+' || st.charAt(i)=='-'){
 				i++;
 			}
-			System.out.println(i);
 			res=0;
 			for (i=i;i<st.length();i++){
 				if(st.charAt(i)=='.' && res!=1){
@@ -43,68 +42,72 @@ public class TableHachage {
 		return res;
 	}
 	
-	public void set(Object k, Object v){
+	public String set(Object k, Object v){
 		if (valueOfString(v) == 0){
 			int res = Integer.parseInt((String)v);
 			h.put(k, res);
 		}
 		else if (valueOfString(v) == 1){
 			Double res = Double.parseDouble((String)v);
-			System.out.println(res);
+			//System.out.println(res);
 			h.put(k, res);
 		}
 		else {
 			h.put(k, v);
 		}
+		return "";
 	}
 	
-	public Object get(Object k){
+	public String get(Object k){
 		if (h.containsKey(k)){
-			return h.get(k);
+			return h.get(k).toString();
 		}
 		else {
-			System.out.println("La cle n'existe pas");
-			return 0;
+			//System.out.println("La cle n'existe pas");
+			return "La cle n'existe pas";
 		}
 	}
 	
-	public void del(Object k){
+	public String del(Object k){
 		if (h.containsKey(k)){
 			h.remove(k);
-			System.out.println("La cle a ete supprime");
+			return "La cle a ete supprime";
 		}
 		else {
-			System.out.println("La cle n'existe pas");
+			return "La cle n'existe pas";
 		}
 	}
 	
-	public void incr(Object k){
+	public String incr(Object k){
 		if (h.containsKey(k)){
 			if (h.get(k) instanceof Integer){
 				int i = (Integer)h.get(k);
 				i++;
 				h.put(k, i);
+				return "";
 			}
 			else if (h.get(k) instanceof Float){
 				float i = (Float)h.get(k);
 				i++;
 				h.put(k, i);
+				return "";
 			}
 			else if (h.get(k) instanceof Double){
 				double i = (Double)h.get(k);
 				i++;
 				h.put(k, i);
+				return "";
 			}
 			else {
-				System.out.println("la valeur n'est pas un nombre");
+				return "La valeur n'est pas un nombre";
 			}
 		}
 		else {
-			System.out.println("la cle n'existe pas");
+			return "La cle n'existe pas";
 		}
 	}
 	
-	public void rPush(Object k,Object v){
+	public String rPush(Object k,Object v){
 		if (h.containsKey(k)){
 			if (h.get(k) instanceof ArrayList){
 				ArrayList<Object> list = (ArrayList<Object>)h.get(k);
@@ -124,9 +127,10 @@ public class TableHachage {
 			list.add(v);
 			h.put(k, list);
 		}
+		return "";
 	}
 	
-	public void lPush(Object k,Object v){
+	public String lPush(Object k,Object v){
 		if (h.containsKey(k)){
 			if (h.get(k) instanceof ArrayList){
 				ArrayList<Object> list = (ArrayList<Object>)h.get(k);
@@ -146,54 +150,56 @@ public class TableHachage {
 			list.add(v);
 			h.put(k, list);
 		}
+		return "";
 	}
 	
-	public void lRange(Object k,int begin, int end){
+	public String lRange(Object k,int begin, int end){
 		if (h.containsKey(k)){
+			String s="";
 			if (h.get(k) instanceof ArrayList){
 				ArrayList<Object> list = (ArrayList<Object>)h.get(k);
 				if (end<0 && begin>=0){
 					for(int i = begin;i<list.size();i++){
-						System.out.println(list.get(i).toString());
+						s=s+list.get(i).toString()+ "\n";
 					}
+					return s;
 				}
 				else if (begin>=0 && end<list.size()){
 					for(int i = begin;i<=end;i++){
-						System.out.println(list.get(i).toString());
+						s=s+list.get(i).toString()+" ";
 					}
+					return s;
 				}
 				else {
-					System.out.println("Il n'y a pas autant d'objet dans cette liste");
+					return "Il n'y a pas autant d'objet dans cette liste";
 				}
 			}
 			else {
 				Object v = h.get(k);
-				System.out.println(v.toString());
+				return v.toString();
 			}
 		}
 		else {
-			System.out.println("La cle n'existe pas");
+			return "La cle n'existe pas";
 		}
 	}
 	
-	public int lLen(Object k){
+	public String lLen(Object k){
 		if (h.containsKey(k)){
 			if (h.get(k) instanceof ArrayList){
 				ArrayList<Object> list = (ArrayList<Object>)h.get(k);
-				return list.size();
+				return ""+list.size()+"";
 			}
 			else {
-				System.out.println("Attention ce n'est pas une liste");
-				return 1;
+				return "Attention ce n'est pas une liste";
 			}
 		}
 		else {
-			System.out.println("La cle n'existe pas");
-			return 0;
+			return "La cle n'existe pas";
 		}
 	}
 	
-	public void lPop(Object k){
+	public String lPop(Object k){
 		if (h.containsKey(k)){
 			if (h.get(k) instanceof ArrayList){
 				ArrayList<Object> list = (ArrayList<Object>)h.get(k);
@@ -201,18 +207,18 @@ public class TableHachage {
 				list.remove(0);
 				h.remove(k);
 				h.put(k, list);
-				System.out.println("la valeur supprimee est :"+v.toString());
+				return "La valeur supprimee est :"+v.toString();
 			}
 			else {
-				System.out.println("Attention ce n'est pas une liste");
+				return "Attention ce n'est pas une liste";
 			}
 		}
 		else {
-			System.out.println("La cle n'existe pas");
+			return "La cle n'existe pas";
 		}
 	}
 	
-	public void rPop(Object k){
+	public String rPop(Object k){
 		if (h.containsKey(k)){
 			if (h.get(k) instanceof ArrayList){
 				ArrayList<Object> list = (ArrayList<Object>)h.get(k);
@@ -220,14 +226,14 @@ public class TableHachage {
 				list.remove(list.size()-1);
 				h.remove(k);
 				h.put(k, list);
-				System.out.println("la valeur supprimee est :"+v.toString());
+				return "La valeur supprimee est :"+v.toString();
 			}
 			else {
-				System.out.println("Attention ce n'est pas une liste");
+				return "Attention ce n'est pas une liste";
 			}
 		}
 		else {
-			System.out.println("La cle n'existe pas");
+			return "La cle n'existe pas";
 		}
 	}
 }

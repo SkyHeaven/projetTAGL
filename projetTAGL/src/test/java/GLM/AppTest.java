@@ -67,11 +67,11 @@ public class AppTest
     	t.set("test4", "15test15");
     	t.set("test5", "15618");
     	assertEquals("test1", t.get("test1"));
-    	assertEquals(1, t.get("test2"));
-    	assertEquals(1.5618,t.get("test3"));
+    	assertEquals("1", t.get("test2"));
+    	assertEquals("1.5618",t.get("test3"));
     	assertEquals("15test15", t.get("test4"));
-    	assertEquals(15618,t.get("test5"));
-    	assertEquals(0, t.get("test6"));
+    	assertEquals("15618",t.get("test5"));
+    	assertEquals("La cle n'existe pas", t.get("test6"));
     }
     
     public void testDel(){
@@ -85,12 +85,12 @@ public class AppTest
     	t.del("test1");
     	t.del("test2");
     	t.del("test3");
-    	assertEquals(0, t.get("test1"));
-    	assertEquals(0, t.get("test2"));
-    	assertEquals(0,t.get("test3"));
+    	assertEquals("La cle n'existe pas", t.get("test1"));
+    	assertEquals("La cle n'existe pas", t.get("test2"));
+    	assertEquals("La cle n'existe pas",t.get("test3"));
     	assertEquals("15test15", t.get("test4"));
-    	assertEquals(15618,t.get("test5"));
-    	assertEquals(0, t.get("test6"));
+    	assertEquals("15618",t.get("test5"));
+    	assertEquals("La cle n'existe pas", t.get("test6"));
     }
     
     public void testIncr(){
@@ -107,11 +107,11 @@ public class AppTest
     	t.incr("test4");
     	t.incr("test5");
     	assertEquals("test1", t.get("test1"));
-    	assertEquals(2, t.get("test2"));
-    	assertEquals(2.5618,t.get("test3"));
+    	assertEquals("2", t.get("test2"));
+    	assertEquals("2.5618",t.get("test3"));
     	assertEquals("15test15", t.get("test4"));
-    	assertEquals(15619,t.get("test5"));
-    	assertEquals(0, t.get("test6"));
+    	assertEquals("15619",t.get("test5"));
+    	assertEquals("La cle n'existe pas", t.get("test6"));
     }
     
     public void testRPush(){
@@ -120,7 +120,7 @@ public class AppTest
     	t.rPush("test1", "test1");
     	t.rPush("test1", "1");
     	t.rPush("test1", "1.5618");
-    	assertEquals(3, t.lLen("test1"));
+    	assertEquals("3", t.lLen("test1"));
     	t.lRange("test1", 0, -1);
     }
     
@@ -130,7 +130,7 @@ public class AppTest
     	t.lPush("test1", "test1");
     	t.lPush("test1", "1");
     	t.lPush("test1", "1.5618");
-    	assertEquals(3, t.lLen("test1"));
+    	assertEquals("3", t.lLen("test1"));
     	t.lRange("test1", 0, -1);
     }
     
@@ -141,7 +141,7 @@ public class AppTest
     	t.rPush("test1", "1");
     	t.rPush("test1", "1.5618");
     	t.rPop("test1");
-    	assertEquals(2, t.lLen("test1"));
+    	assertEquals("2", t.lLen("test1"));
     	t.lRange("test1", 0, -1);
     }
     
@@ -152,7 +152,7 @@ public class AppTest
     	t.rPush("test1", "1");
     	t.rPush("test1", "1.5618");
     	t.lPop("test1");
-    	assertEquals(2, t.lLen("test1"));
+    	assertEquals("2", t.lLen("test1"));
     	t.lRange("test1", 0, -1);
     }
     
@@ -170,12 +170,12 @@ public class AppTest
     	System.out.println();
     	t.lRange("test1", 0, 3);
     	System.out.println();
-    	assertEquals(3, t.lLen("test1"));
+    	assertEquals("3", t.lLen("test1"));
     	t.rPop("test1");
-    	assertEquals(2, t.lLen("test1"));
+    	assertEquals("2", t.lLen("test1"));
     	t.rPop("test1");
-    	assertEquals(1, t.lLen("test1"));
+    	assertEquals("1", t.lLen("test1"));
     	t.rPop("test1");
-    	assertEquals(0, t.lLen("test1"));
+    	assertEquals("0", t.lLen("test1"));
     }
 }
