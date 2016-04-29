@@ -180,40 +180,38 @@ public class EchoServer {
 	                	}
                 	}
                      System.out.println (name+": " + inputLine);
-                     
+                     // split afin de recuperer les arguments de la fonction
+                     String[] parts = inputLine.split(" ");
                      if( inputLine.contains("lPush" ) ) {
-                    	 // split afin de recuperer les arguments de la fonction
-                    	 String[] parts = inputLine.split(" ");
                     	 tableHachage.lPush(parts[1],parts[2]);
                      }
                      else if (inputLine.contains("rPush" )){
-                    	 String[] parts = inputLine.split(" ");
                     	 tableHachage.rPush(parts[1],parts[2]);
                      }
                      else if (inputLine.contains("lRange" )){
-                    	 String[] parts = inputLine.split(" ");
                     	 tableHachage.lRange(parts[1],Integer.parseInt(parts[2]),Integer.parseInt(parts[3]));
                      }
                      else if (inputLine.contains("lLen" )){
-                    	 String[] parts = inputLine.split(" ");
                     	 writers.get(Integer.parseInt(name)).println("La taille de la table est de : " +tableHachage.lLen(parts[1]));
                      }
                      
                      else if (inputLine.contains("set" )){
-                    	 String[] parts = inputLine.split(" ");
                     	 tableHachage.set(parts[1],parts[2]);
                      }
                      else if (inputLine.contains("get" )){
-                    	 String[] parts = inputLine.split(" ");
                     	 tableHachage.get(parts[1]);
                      }
                      else if (inputLine.contains("del" )){
-                    	 String[] parts = inputLine.split(" ");
                     	 tableHachage.del(parts[1]);
                      }
                      else if (inputLine.contains("incr" )){
-                    	 String[] parts = inputLine.split(" ");
                     	 tableHachage.incr(parts[1]);
+                     }
+                     else if (inputLine.contains("lPop"){
+                     	tableHachage.lPop(parts[1]);
+                     }
+                     else if (inputLine.contains("rPop"){
+                     	 tableHachage.rPop(parts[1]);
                      }
                      else{
                     	 writers.get(Integer.parseInt(name)).println("Mauvaise commande");         
