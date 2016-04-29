@@ -15,7 +15,7 @@ Pour le côté connexion client/serveur nous n'avons pas effecué de tests unita
  La syntaxe est la suivante : nomFonction [argument1] [argument2] ... [argument n]
  L'utilisateur a la possibilité de se servir des fonctions suivantes :
  
-## Partie une valeur par clé :
+#### Partie une valeur par clé :
  
  set cle valeur
  Ajoute la valeur associée à la clé.
@@ -32,7 +32,7 @@ Pour le côté connexion client/serveur nous n'avons pas effecué de tests unita
  Incrémente la valeur associée à la clé.
  Si la clé n'est pas un nombre ou que la clé n'existe pas l'utilisateur est prévenu par un message.
  
- ##Partie une liste par clé :
+#### Partie une liste par clé :
  
  rPush cle valeur
  Stocke la valeur grâce à sa clé. 
