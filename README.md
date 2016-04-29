@@ -61,6 +61,8 @@ Pour le côté connexion client/serveur nous n'avons pas effecué de tests unita
  En cas d'erreur de saisie de la part de l'utilisateur, un message avertit l'utilisateur.
  
  
-# Feedback sur Travis +( commentaires suggestions projet)
+# Feedback sur Travis
+ 
+ Nous avons utilisé Travis, cependant, il nous renvoie beaucoup d'erreurs que nous n'arrivons pas à résoudre et ce malgré plusieurs recherches sur la documentation et les forums qui ne semblent pas très complets par rapport aux erreurs rencontrées.
 
 Projet de TAGL 2016
