@@ -6,7 +6,7 @@
  
 # Fonctionnalités validées par les tests unitaires
 Nous avons effectués des tests unitaires sur chacune des fonctions de hachage. Ces tests ont été faits sur des types différents à savoir double, int et String.
-Pour le côté connexion client/serveur nous n'avons pas effecué de tests unitaires.
+La gestion client/serveur multi-threadée a été testé mais pas avec JUnit.
 
 # Manuel utilisateur
  Lancer le serveur sur un terminal.
