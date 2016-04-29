@@ -63,7 +63,7 @@ public class TableHachage {
 			return h.get(k);
 		}
 		else {
-			System.out.println("La clé n'existe pas");
+			System.out.println("La cle n'existe pas");
 			return 0;
 		}
 	}
@@ -71,10 +71,10 @@ public class TableHachage {
 	public void del(Object k){
 		if (h.containsKey(k)){
 			h.remove(k);
-			System.out.println("La clé a été supprimé");
+			System.out.println("La cle a ete supprime");
 		}
 		else {
-			System.out.println("La clé n'existe pas");
+			System.out.println("La cle n'existe pas");
 		}
 	}
 	
@@ -100,7 +100,7 @@ public class TableHachage {
 			}
 		}
 		else {
-			System.out.println("la clé n'existe pas");
+			System.out.println("la cle n'existe pas");
 		}
 	}
 	
@@ -172,7 +172,7 @@ public class TableHachage {
 			}
 		}
 		else {
-			System.out.println("La clé n'existe pas");
+			System.out.println("La cle n'existe pas");
 		}
 	}
 	
@@ -188,7 +188,7 @@ public class TableHachage {
 			}
 		}
 		else {
-			System.out.println("La clé n'existe pas");
+			System.out.println("La cle n'existe pas");
 			return 0;
 		}
 	}
@@ -201,14 +201,14 @@ public class TableHachage {
 				list.remove(0);
 				h.remove(k);
 				h.put(k, list);
-				System.out.println("la valeur supprimé est :"+v.toString());
+				System.out.println("la valeur supprimee est :"+v.toString());
 			}
 			else {
 				System.out.println("Attention ce n'est pas une liste");
 			}
 		}
 		else {
-			System.out.println("La clé n'existe pas");
+			System.out.println("La cle n'existe pas");
 		}
 	}
 	
@@ -220,14 +220,14 @@ public class TableHachage {
 				list.remove(list.size()-1);
 				h.remove(k);
 				h.put(k, list);
-				System.out.println("la valeur supprimé est :"+v.toString());
+				System.out.println("la valeur supprimee est :"+v.toString());
 			}
 			else {
 				System.out.println("Attention ce n'est pas une liste");
 			}
 		}
 		else {
-			System.out.println("La clé n'existe pas");
+			System.out.println("La cle n'existe pas");
 		}
 	}
 }

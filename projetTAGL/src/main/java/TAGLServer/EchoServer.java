@@ -5,7 +5,9 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 
 //public class EchoServer {
 //
@@ -124,8 +126,8 @@ public class EchoServer {
 
     
     private static final int PORT = 2009;
-    private static HashSet<String> names = new HashSet<String>();
-    private static HashSet<PrintWriter> writers = new HashSet<PrintWriter>();
+    private static ArrayList<String> names = new ArrayList<String>();
+    private static ArrayList<PrintWriter> writers = new ArrayList<PrintWriter>();
     
     public static void main(String[] args) throws Exception {
         System.out.println("The server is running.");
@@ -153,13 +155,12 @@ public class EchoServer {
         public void run() {
             try {
 
-                in = new BufferedReader(new InputStreamReader(
-                socket.getInputStream()));
+                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 out = new PrintWriter(socket.getOutputStream(), true);
                 tableHachage = new TableHachage();
 
                 synchronized (names) {
-                    name = "client " + names.size()+"";
+                    name = ""+names.size()+"";
                     names.add(name);
                 }
                 
@@ -167,6 +168,9 @@ public class EchoServer {
 
                 while (true && !writers.isEmpty()) {
                 	String inputLine=in.readLine();
+                	if(inputLine==null){
+                        return;
+                    }
                 	if(inputLine.length() > 0){
                		// enleve un eventuel espace au debut de la commande
 	                	if(inputLine.charAt(0)==' '){
@@ -175,8 +179,7 @@ public class EchoServer {
 	                	    inputLine = strB.toString();
 	                	}
                 	}
-                     System.out.println ("Server: " + inputLine);                      
-                     out.println(inputLine);
+                     System.out.println (name+": " + inputLine);
                      
                      if( inputLine.contains("lPush" ) ) {
                     	 // split afin de recuperer les arguments de la fonction
@@ -193,7 +196,7 @@ public class EchoServer {
                      }
                      else if (inputLine.contains("lLen" )){
                     	 String[] parts = inputLine.split(" ");
-                    	 System.out.println("La taille de la table est de : " +tableHachage.lLen(parts[1]));
+                    	 writers.get(Integer.parseInt(name)).println("La taille de la table est de : " +tableHachage.lLen(parts[1]));
                      }
                      
                      else if (inputLine.contains("set" )){
@@ -213,7 +216,7 @@ public class EchoServer {
                     	 tableHachage.incr(parts[1]);
                      }
                      else{
-                    	 System.out.println("Mauvaise commande");         
+                    	 writers.get(Integer.parseInt(name)).println("Mauvaise commande");         
                      }
 
                      if (inputLine.equals("Bye.")) 

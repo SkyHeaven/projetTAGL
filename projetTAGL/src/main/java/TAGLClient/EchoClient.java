@@ -109,14 +109,11 @@ public class EchoClient {
         Socket socket = new Socket(serverAddress, 2009);
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-        BufferedReader stdIn =
-                new BufferedReader(
-                    new InputStreamReader(System.in))
-        ) {
+        BufferedReader stdIn =new BufferedReader(new InputStreamReader(System.in))) {
             String userInput;
             while ((userInput = stdIn.readLine()) != null) {
-                System.out.println(in.readLine());
                 out.println(userInput);
+                System.out.println(in.readLine());
             }
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host " + serverAddress);
